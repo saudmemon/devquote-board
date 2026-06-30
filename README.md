@@ -30,7 +30,7 @@ This was my first hands-on React project. I focused on understanding core concep
 ## Run Locally
 
 \`\`\`bash
-git clone https://github.com/your-username/devquote-board.git
+git clone https://github.com/saudmemon/devquote-board.git
 cd devquote-board
 npm install
 npm start
