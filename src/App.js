@@ -4,6 +4,7 @@ import useMoodCompile from './hooks/useMoodCompile'
 import MoodSelector from './components/MoodSelector'
 import QuoteCard from './components/QuoteCard'
 import Timer from './components/Timer'
+import LikedQuotes from './components/LikedQuotes'
 import './App.css'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 
   const [time, setTime] = useState('')
   const [date, setDate] = useState('')
+  const [showLiked, setShowLiked] = useState(false)
 
   useEffect(() => {
     const updateClock = () => {
@@ -75,6 +77,10 @@ function App() {
         </div>
       </div>
 
+      <button className="liked-btn" onClick={() => setShowLiked(true)}>
+        ❤️ Liked Quotes
+      </button>
+
       <MoodSelector
         currentMood={mood}
         onMoodChange={(m) => {
@@ -92,6 +98,8 @@ function App() {
       />
 
       <Timer secs={secs} />
+
+      {showLiked && <LikedQuotes onClose={() => setShowLiked(false)} />}
     </div>
   )
 }

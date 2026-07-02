@@ -235,3 +235,91 @@ body {
     transform: translateY(0);
   }
 }
+
+.liked-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 12px;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.liked-btn:hover {
+  background: rgba(255,255,255,0.13);
+}
+
+.liked-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.liked-box {
+  background: #1e1f35;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.liked-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.liked-header h2 {
+  color: white;
+  font-size: 16px;
+}
+
+.close-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.liked-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+.liked-text {
+  font-size: 15px;
+  font-style: italic;
+  color: #1a1b2e;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.liked-author {
+  font-size: 12px;
+  color: #888780;
+}
+
+.no-quotes {
+  color: #b8b9d6;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+}
