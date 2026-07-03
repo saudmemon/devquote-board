@@ -1,4 +1,4 @@
-# DevQuote Board 
+# MoodCompile 
 
 A simple React app that shows random developer quotes, with the ability to like/save your favorites.
 
