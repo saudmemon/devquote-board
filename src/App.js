@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import useSound from './hooks/useSound'
 import useMoodCompile from './hooks/useMoodCompile'
+import useTranslation from './hooks/useTranslation'
 import MoodSelector from './components/MoodSelector'
 import QuoteCard from './components/QuoteCard'
 import Timer from './components/Timer'
 import LikedQuotes from './components/LikedQuotes'
+import LanguageSelector from './components/LanguageSelector'
 import './App.css'
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
     playBurnout
   } = useSound()
 
+  const { lang, setLang, translate, translating } = useTranslation()
+
   const moodSounds = {
     motivated: playMotivated,
     stuck: playStuck,
@@ -39,6 +43,8 @@ function App() {
   const [time, setTime] = useState('')
   const [date, setDate] = useState('')
   const [showLiked, setShowLiked] = useState(false)
+  const [translatedText, setTranslatedText] = useState('')
+  const [translatedAuthor, setTranslatedAuthor] = useState('')
 
   useEffect(() => {
     const updateClock = () => {
@@ -57,13 +63,23 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (secs === 15) {
-      playDing()
-    }
-    if (secs <= 5 && secs > 0) {
-      playTick()
-    }
+    if (secs === 15) playDing()
+    if (secs <= 5 && secs > 0) playTick()
   }, [secs])
+
+  // Jab bhi quote ya language change ho — translate karo
+  useEffect(() => {
+    if (!currentQuote) return
+
+    const doTranslate = async () => {
+      const text = await translate(currentQuote.text, lang)
+      const author = await translate(currentQuote.author, lang)
+      setTranslatedText(text)
+      setTranslatedAuthor(author)
+    }
+
+    doTranslate()
+  }, [currentQuote, lang])
 
   if (!currentQuote) return null
 
@@ -71,9 +87,12 @@ function App() {
     <div className="app">
       <div className="top-row">
         <span className="title">Mood<span className="highlight">Compile</span></span>
-        <div className="datetime">
-          <div className="time">{time}</div>
-          <div className="date">{date}</div>
+        <div className="right-top">
+          <LanguageSelector lang={lang} onLangChange={setLang} />
+          <div className="datetime">
+            <div className="time">{time}</div>
+            <div className="date">{date}</div>
+          </div>
         </div>
       </div>
 
@@ -91,7 +110,10 @@ function App() {
 
       <QuoteCard
         currentMood={currentMood}
-        currentQuote={currentQuote}
+        currentQuote={{
+          text: translating ? 'Translating...' : translatedText || currentQuote.text,
+          author: translatedAuthor || currentQuote.author
+        }}
         liked={liked}
         onNewQuote={() => { playWhoosh(); newQuote() }}
         onLike={() => { playMotivated(); toggleLike() }}
