@@ -323,3 +323,26 @@ body {
   padding: 20px 0;
   font-size: 14px;
 }
+.right-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.lang-select {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #b8b9d6;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.lang-select option {
+  background: #1e1f35;
+  color: white;
+}
