@@ -7,6 +7,11 @@
   font-family: 'Inter', sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -15,14 +20,16 @@ body {
   background-size: 24px 24px;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 20px 0;
+  overflow-x: hidden;
 }
 
 .app {
   width: 100%;
   max-width: 480px;
-  padding: 28px 16px;
+  padding: 24px 16px;
   margin: 0 auto;
 }
 
@@ -348,4 +355,57 @@ body {
 .lang-select option {
   background: #1e1f35;
   color: white;
+}
+
+@media (max-height: 760px) {
+  body {
+    padding: 12px 0;
+  }
+
+  .app {
+    padding: 16px 12px;
+  }
+
+  .top-row {
+    margin-bottom: 14px;
+  }
+
+  .moods {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .card {
+    padding: 20px 18px;
+    margin-bottom: 10px;
+  }
+
+  .quote-text {
+    font-size: 16px;
+  }
+
+  .author-row {
+    margin-bottom: 16px;
+  }
+
+  .btns {
+    gap: 8px;
+  }
+
+  .btn-new,
+  .btn-like {
+    padding: 10px;
+  }
+
+  .timer-card {
+    padding: 14px 16px;
+  }
+
+  .timer-val {
+    font-size: 24px;
+  }
+
+  .liked-btn {
+    margin-bottom: 10px;
+  }
 }
