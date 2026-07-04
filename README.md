@@ -12,11 +12,11 @@ A simple React app that shows random developer quotes, with the ability to like/
 
 ## Built With
 
-- React.js
-- useState, useEffect Hooks
-- Custom Hooks
-- localStorage API
-- CSS animations
+> React.js
+> useState, useEffect Hooks
+> Custom Hooks
+> localStorage API
+> CSS animations
 
 ## What I learned
 
