@@ -65,21 +65,18 @@ function App() {
   useEffect(() => {
     if (secs === 15) playDing()
     if (secs <= 5 && secs > 0) playTick()
-  }, [secs])
+  }, [secs, playDing, playTick])
 
-  // Jab bhi quote ya language change ho — translate karo
   useEffect(() => {
     if (!currentQuote) return
-
     const doTranslate = async () => {
       const text = await translate(currentQuote.text, lang)
       const author = await translate(currentQuote.author, lang)
       setTranslatedText(text)
       setTranslatedAuthor(author)
     }
-
     doTranslate()
-  }, [currentQuote, lang])
+  }, [currentQuote, lang, translate])
 
   if (!currentQuote) return null
 
